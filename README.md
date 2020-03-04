@@ -28,6 +28,12 @@ clj -A:lint
 clj -A:lint:fix
 ```
 
+With all the commands you can optionally give a path as a argument for example:
+
+```shell script
+clj -A:lint:fix ../src
+```
+
 # Ideas for the future
 
 * Integrate this with a git commit hook, where we can possibly only lint changed files.

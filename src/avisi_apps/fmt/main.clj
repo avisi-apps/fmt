@@ -79,13 +79,16 @@
 
 (defn cleanup [] (flush) (shutdown-agents))
 
+(defn find-files [override-folder]
+  (let [folder (if override-folder override-folder ".")] (fs/find-files folder #".*\.clj[cs]?")))
+
 (defn -main [& args]
   (zp/set-options!
     (assoc options
       :configured? true
       :parallel? true))
   (try
-    (let [files (fs/find-files "." #".*\.clj[cs]?")
+    (let [files (find-files (second args))
           err-msgs (case (first args)
                      "fix" (fix files)
                      "check" (check files))]
