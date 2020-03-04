@@ -10,10 +10,10 @@ under the hood.
 Add `fmt` to your project, add the following to your `deps.edn`
 
 ```clojure
-{:aliases {:lint {:override-deps {avisi-apps/fmt {:git/url "git@github.com:avisi-apps/fmt.git"
-                                                  :sha "<git SHA>"}}
+:lint {:extra-deps {avisi-apps/fmt {:git/url "git@github.com:avisi-apps/fmt.git"
+                                                  :sha "a9ece6cb657472a12742bfcd95433bce0f169ccc"}}
                   :main-opts ["-m" "avisi-apps.fmt.main" "check"]}
-           :fix {:main-opts ["-m" "avisi-apps.fmt.main" "fix"]}}}
+:fix {:main-opts ["-m" "avisi-apps.fmt.main" "fix"]}
 ```
 
 ## Check formatting
