@@ -14,11 +14,13 @@
 (def options
   {:style :no-hang
    :width 120
-   :map {:comma? false :indent 2}
+   :map {:comma? false :indent 2 :force-nl? true}
+   :vector {:wrap-coll? false}
    :fn-map
      {"defsc" :arg2
       "defn" :arg2
-      ">defn" :arg2
+      ">defn" :arg1
+      "defstate" :arg1
       ">def" :arg1
       "defrouter" :arg2
       "defstatemachine" :arg1
