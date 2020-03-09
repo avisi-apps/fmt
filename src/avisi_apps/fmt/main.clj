@@ -9,12 +9,19 @@
   (:import
     [java.io File]))
 
-(defn print! [bar] (progress/print bar {:format "|:bar| :progress/:total" :complete \#}))
+(defn print! [bar]
+  (progress/print
+    bar
+    {:format "|:bar| :progress/:total"
+     :complete \#}))
 
 (def options
   {:style :no-hang
    :width 120
-   :map {:comma? false :indent 2 :force-nl? true}
+   :map
+     {:comma? false
+      :indent 2
+      :force-nl? true}
    :vector {:wrap-coll? false}
    :fn-map
      {"defsc" :arg2
@@ -26,7 +33,7 @@
       "defstatemachine" :arg1
       "pc/defmutation" :arg2
       "pc/defresolver" :arg2
-      "defmutation" :arg2-extend}})
+      "defmutation" :arg2-fn}})
 
 (defn format-one-file [f]
   (let [parent-dir (fs/parent f)
@@ -47,10 +54,13 @@
       (reduce
         (fn [acc item]
           (let [errors (f item)
-                {:keys [bar] :as acc} (update acc :bar progress/tick)]
+                {:keys [bar]
+                 :as acc}
+                  (update acc :bar progress/tick)]
             (print! bar)
             (if (seq errors) (reduced (assoc acc :errors errors)) acc)))
-        {:bar bar :errors nil}
+        {:bar bar
+         :errors nil}
         items)
       (update
         :bar

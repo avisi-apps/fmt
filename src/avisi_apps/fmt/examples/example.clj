@@ -22,7 +22,8 @@
 
 [1 2 3 4 5 6]
 
-{:key-1 v1 :key-2 v2}
+{:key-1 v1
+ :key-2 v2}
 
 #{a b c d e f}
 
@@ -37,7 +38,8 @@
 
 (filter even? (range 1 10))
 
-{:short-key "value" :very-long-key "value"}
+{:short-key "value"
+ :very-long-key "value"}
 
 (dom/div {:foo "Bar"} (dom/span "hoi"))
 
