@@ -11,7 +11,7 @@ Add `fmt` to your project, add the following to your `deps.edn`
 
 ```clojure
 :lint {:extra-deps {avisi-apps/fmt {:git/url "git@github.com:avisi-apps/fmt.git"
-                                                  :sha "a9ece6cb657472a12742bfcd95433bce0f169ccc"}}
+                                    :sha "b41d298f52cae6fd91aa908b36699a46ac38bc05"}}
                   :main-opts ["-m" "avisi-apps.fmt.main" "check"]}
 :fix {:main-opts ["-m" "avisi-apps.fmt.main" "fix"]}
 ```
