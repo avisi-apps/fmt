@@ -104,7 +104,9 @@
           err-msgs (case (first args)
                      "fix" (fix files)
                      "check" (check files))]
-      (if err-msgs (run! println err-msgs) (println (str (clansi/style "All lights green" :green)))))
+      (if err-msgs
+        (do (run! println err-msgs) (System/exit 1))
+        (println (str (clansi/style "All lights green" :green)))))
     (finally (cleanup))))
 
 (comment
