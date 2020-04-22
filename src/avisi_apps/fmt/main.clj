@@ -74,7 +74,7 @@
   (run-with-progress!
     (fn fix-file [f]
       (try
-        (format-one-file f)
+        (when-not (file-formatted? f) (format-one-file f))
         nil
         (catch Exception e
           [(str (clansi/style "Failed formatting file: " :red) (clansi/style (str f) :underline))
