@@ -4,6 +4,7 @@
     [progrock.core :as progress]
     [zprint.config]
     [zprint.main]
+    [clojure.string :as string]
     clansi
     [me.raynes.fs :as fs])
   (:import
@@ -92,7 +93,13 @@
 (defn cleanup [] (flush) (shutdown-agents))
 
 (defn find-files [override-folder]
-  (let [folder (if override-folder override-folder ".")] (fs/find-files folder #".*\.clj[cs]?")))
+  (let [folder (if override-folder override-folder ".")]
+    (fs/find-files*
+      folder
+      (fn [^File file]
+        (and
+          (not (string/includes? (.getAbsolutePath file) ".shadow-cljs"))
+          (re-matches #".*\.clj[cs]?" (.getName file)))))))
 
 (defn -main [& args]
   (zp/set-options!
