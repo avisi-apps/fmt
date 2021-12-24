@@ -1,6 +1,6 @@
 {:path ["src"]
  :deps {org.clojure/clojure {:mvn/version "1.10.1"}
-        zprint/zprint {:mvn/version "0.5.3"}
+        zprint/zprint {:mvn/version "1.2.0"}
         me.raynes/fs {:mvn/version "1.4.6"}
         clansi/clansi {:mvn/version "1.0.0"}
         progrock/progrock {:mvn/version "0.1.2"}}
